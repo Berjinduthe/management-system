@@ -1,26 +1,23 @@
-from django .urls import path
+"""newproject URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
 from django.contrib import admin
+from django.urls import path,include
 from app import views
 
-
-urlpatterns=[
-    path('views/',admin.site.urls),
-    path('home/',views.home,name="home"),
-    path('signin/',views.signin,name="signin"),
-    path('signout/',views.signout,name="signout"),
-    path('register/',views.register,name="register"),
-    path('employee/',views.employee,name="employee"),
-    path('customer/<str:username>',views.customer,name="customer"),
-    path('active_users/',views.active_users,name="active_users"),
-    path('admin_update/<str:username>',views.admin_update,name="admin_update"),
-    path('admin_delete/<str:username>',views.admin_delete,name="admin_delete"),
-    path('paswd_change/<str:username>',views.paswd_change,name="paswd_change"),
-    path('leave_req/<str:username>',views.leave_req,name="leave_req"),
-    path('user_summary/<str:username>',views.user_summary,name="user_summary"),
-    path('leave_search/<str:username>',views.leave_search,name="leave_search"),
-    path('pending/',views.pending,name="pending"),
-    path('accepted/',views.accepted,name="accepted"),
-    path('rejected/',views.rejected,name="rejected"),
-    path('accept/<int:id>',views.accept,name="accept"),    
-    path('reject/<int:id>',views.reject,name="reject"),  
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('app.urls')),
 ]
